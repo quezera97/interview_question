@@ -18,6 +18,7 @@
   "dependencies": {
     "@vueuse/core": "^13.6.0",
     "axios": "^1.11.0",
+    "bcrypt": "^6.0.0",
     "pinia": "^3.0.3",
     "vue-router": "^4.5.1"
   },
