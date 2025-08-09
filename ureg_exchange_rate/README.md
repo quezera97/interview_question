@@ -29,3 +29,6 @@ node set PATH
 
 set PATH=C:\\laragon\\bin\\nodejs\\node-v22;%PATH%
 
+Docker
+docker-compose --env-file backend/.env up
+
