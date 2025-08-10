@@ -2,6 +2,8 @@
 U-REG Exchange Rate
 --------------------
 
+This app consists of 2 part which are backend and frontend folder
+
 Backend
 ---------------------------------------------------
 1. composer i
@@ -21,5 +23,5 @@ Docker
 docker-compose --env-file backend/.env up
 
 .env for backend 
-DB_USERNAME must be other than root
-DB_PASSWORD cannot be empty
+1. DB_USERNAME must be other than root
+2. DB_PASSWORD cannot be empty
