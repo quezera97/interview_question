@@ -3,7 +3,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: laravel-backend
+    container_name: ureg-backend
+    restart: always
     working_dir: /app
     volumes:
       - ./backend:/app
@@ -24,8 +25,12 @@ services:
       DB_PASSWORD: "${DB_PASSWORD}"
     command: >
       sh -c "
-        php artisan migrate:fresh --seed &&
+        echo 'Waiting for MySQL...';
+        until nc -z database 3306; do
+          sleep 2;
+        done;
         php artisan key:generate &&
+        php artisan migrate:fresh --seed &&
         php artisan optimize:clear &&
         php artisan serve --host=0.0.0.0 --port=8000
       "
@@ -34,7 +39,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: vue-frontend
+    container_name: ureg-frontend
     working_dir: /app
     env_file:
       - ./frontend/.env.docker
@@ -45,11 +50,11 @@ services:
       - "5173:5173"
     networks:
       - forexnetwork
-    command: npm run dev
+    command: npm run dev --host
 
   database:
     image: mysql:8.4.6
-    container_name: mysql-database
+    container_name: ureg-database
     restart: always
     environment:
       MYSQL_DATABASE: "${DB_DATABASE}"
