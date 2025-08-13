@@ -30,13 +30,11 @@ Docker (optional)
 # use .env file from Backend folder
 docker-compose --env-file backend/.env up 
 ```
+.env docker database setup
 
-.env for database 
 1. DB_USERNAME must be other than root
 2. DB_PASSWORD cannot be empty
-
-.env database setup example
-----------------------
+   
 ```sh
 DB_CONNECTION=mysql
 DB_HOST=database # Docker database service
