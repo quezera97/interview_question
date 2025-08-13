@@ -28,7 +28,7 @@ Docker (optional)
 ---------------------------------------------------
 ```sh
 # use .env file from Backend folder
-docker-compose --env-file backend/.env up 
+docker compose --env-file backend/.env up --build
 ```
 .env docker database setup
 
